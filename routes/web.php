@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\ParticipanteController;
+use App\Http\Controllers\MesaController;
+use App\Http\Controllers\PartidoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource("/mesas", MesaController::class);
+Route::resource("/participantes", ParticipanteController::class);
+Route::resource("/partidos", PartidoController::class);
