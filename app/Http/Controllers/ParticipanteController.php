@@ -21,6 +21,28 @@ class ParticipanteController extends Controller
     }
 
     /**
+     * Display a listing of the resource filtering by voted.
+     */
+    public function votes($mesa_id)
+    {
+        if (isset($mesa_id)) {
+            $mesa = Mesa::find($mesa_id);
+            $haveNotVoted = Participante::where('voted', false)->where('mesa_id', $mesa_id)->get();
+            $haveVoted = Participante::where('voted', true)->where('mesa_id', $mesa_id)->get();
+        } else {
+            $haveNotVoted = Participante::where('voted', false)->get();
+            $haveVoted = Participante::where('voted', true)->get();
+        }
+        
+
+        return view("votos.index", [
+            "pendientes" => $haveNotVoted,
+            "voted" => $haveVoted,
+            "mesa" => $mesa
+        ]);
+    }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create()
@@ -114,5 +136,17 @@ class ParticipanteController extends Controller
         $participante->delete();
 
         return redirect("participantes");
+    }
+
+    /**
+     * Vote participant
+     */
+    public function vote($id)
+    {
+        $participante = Participante::find($id);
+        $participante->voted = true;
+        $participante->save();
+
+        return redirect("votos/mesa/" . $participante->mesa_id);
     }
 }

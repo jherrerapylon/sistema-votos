@@ -17,6 +17,7 @@
                     <th scope="col">Dirección</th>
                     <th></th>
                     <th></th>
+                    <th></th>
                 </tr>
             </thead>
 
@@ -34,6 +35,9 @@
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                             </form>
+                        </td>
+                        <td>
+                            <a href="{{ url('votos/mesa/'.$mesa->id) }}" class="btn btn-info btn-sm">Votaciones</a>
                         </td>
                     </tr>
                 @endforeach

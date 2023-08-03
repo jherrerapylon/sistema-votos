@@ -21,6 +21,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('participantes') }}">Participantes</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('votos') }}">Votos</a>
+                    </li>
                 </ul>
             </div>
         </nav>
