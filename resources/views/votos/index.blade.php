@@ -35,6 +35,10 @@
                 @endforeach
             </tbody>
         </table>
-
+        <div class="mb-3 row">
+            <div class="col-6">
+                <a href="{{ url('mesas') }}" class="btn btn-secondary">Volver</a>
+            </div>
+        </div>
     </div>
 </main>

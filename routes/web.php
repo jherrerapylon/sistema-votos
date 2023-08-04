@@ -25,3 +25,5 @@ Route::resource("/participantes", ParticipanteController::class);
 Route::resource("/partidos", PartidoController::class);
 Route::get("/votos/mesa/{mesa_id}", [ParticipanteController::class, "votes"])->name("votos.index");
 Route::put("/votos/participante/{participante_id}", [ParticipanteController::class, "vote"]);
+Route::get("/recuento", [PartidoController::class, "recuento"])->name("recuento.index");
+Route::put("/recuento/{partido_id}", [PartidoController::class, "addVote"]);

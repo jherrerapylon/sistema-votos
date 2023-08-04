@@ -20,6 +20,18 @@ class PartidoController extends Controller
     }
 
     /**
+     * Display a listing of the partidos prepared to add votes.
+     */
+    public function recuento()
+    {
+        $partidos = Partido::all();
+
+        return view("recuento.index", [
+            "partidos" => $partidos
+        ]);
+    }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create()
@@ -93,5 +105,17 @@ class PartidoController extends Controller
         $partido->delete();
 
         return redirect("partidos");
+    }
+
+    /**
+     *  Add a vote to the specified Partido politico
+     */
+    public function addVote($id)
+    {
+        $partido = Partido::find($id);
+        $partido->votes++;
+        $partido->save();
+
+        return redirect("recuento");
     }
 }

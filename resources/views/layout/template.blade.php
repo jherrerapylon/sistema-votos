@@ -22,7 +22,7 @@
                         <a class="nav-link" href="{{ url('participantes') }}">Participantes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('votos') }}">Votos</a>
+                        <a class="nav-link" href="{{ url('recuento') }}">Recuento</a>
                     </li>
                 </ul>
             </div>
