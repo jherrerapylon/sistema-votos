@@ -4,9 +4,13 @@
 
 @section('contenido')
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <main>
     <div class="container py-4">
         <h2>Sistema de Votos para la mesa {{$mesa->name}}</h2>
+
+
+        <input type="text" id="inputBuscar" class="form-control my-3" placeholder="Buscar">
 
         {{--  Listado de participantes pendientes de votar --}}
         <table class="table table-hover">
@@ -42,3 +46,14 @@
         </div>
     </div>
 </main>
+
+<script>
+        jQuery(document).ready(function() {
+            $("#inputBuscar").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("table tbody tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+    });
+        });
+</script>
